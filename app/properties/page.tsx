@@ -1,8 +1,13 @@
 import React from "react";
-import properties from "@/properties.json";
-import PropertyCard from "@/components/PropertyCard";
+import PropertyCard, { IPropertyCard } from "@/components/PropertyCard";
+import { fetchProperties } from "@/utils/requests";
 
-const AllProperties = () => {
+const AllProperties = async () => {
+  const properties = await fetchProperties({
+    page_limit: 10,
+    page_number: 1,
+  });
+
   return (
     <section className="px-4 py-6">
       <div className="container-xl lg:container m-auto px-4 py-6">
@@ -12,7 +17,7 @@ const AllProperties = () => {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {properties.map((property, idx) => (
+            {properties?.data?.map((property: IPropertyCard, idx: number) => (
               <PropertyCard key={idx} {...property} />
             ))}
           </div>

@@ -6,7 +6,7 @@ import { FaBath } from "react-icons/fa";
 import { FaRulerCombined } from "react-icons/fa";
 import { FaMoneyBill } from "react-icons/fa";
 
-interface IPropertyCard {
+export interface IPropertyCard {
   _id: string;
   name: string;
   type: string;

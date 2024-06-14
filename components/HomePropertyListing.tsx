@@ -1,12 +1,13 @@
 import React from "react";
-import properties from "@/properties.json";
-import PropertyCard from "@/components/PropertyCard";
+import PropertyCard, { IPropertyCard } from "@/components/PropertyCard";
 import Link from "next/link";
+import { fetchProperties } from "@/utils/requests";
 
-const HomePropertyListing = () => {
-  const recentProperties = properties
-    .sort(() => Math.random() - Math.random())
-    .slice(0, 3);
+const HomePropertyListing = async () => {
+  const recentProperties = await fetchProperties({
+    page_limit: 3,
+    page_number: 1,
+  });
 
   return (
     <>
@@ -19,7 +20,7 @@ const HomePropertyListing = () => {
             {recentProperties.length === 0 ? (
               <p>No Properties Found</p>
             ) : (
-              recentProperties.map((property) => (
+              recentProperties?.data?.map((property: IPropertyCard) => (
                 <PropertyCard key={property._id} {...property} />
               ))
             )}
