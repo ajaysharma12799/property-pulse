@@ -10,7 +10,10 @@ type FetchPropertyById = {
 async function fetchProperties({ page_limit }: FetchProperties) {
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_DOMAIN}/properties?page_limit=${page_limit}`
+      `${process.env.NEXT_PUBLIC_API_DOMAIN}/properties?page_limit=${page_limit}`,
+      {
+        cache: "no-store",
+      }
     );
     const properties = await response.json();
 
