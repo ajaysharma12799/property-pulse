@@ -11,6 +11,7 @@ import PropertyDetails from "@/components/PropertyDetails";
 // import ShareButtons from "@/components/ShareButtons";
 import Spinner from "@/components/Spinner";
 import { FaArrowLeft } from "react-icons/fa";
+import PropertyImages from "@/components/PropertyImages";
 
 const PropertyPage = () => {
   const { id } = useParams();
@@ -35,6 +36,8 @@ const PropertyPage = () => {
       fetchPropertyData();
     }
   }, [id, property]);
+
+  console.log("Property --> ", property);
 
   if (!property && !loading) {
     return (
@@ -72,7 +75,7 @@ const PropertyPage = () => {
               </div>
             </div>
           </section>
-          {/* <PropertyImages images={property.images} /> */}
+          <PropertyImages images={property.images} />
         </>
       )}
     </>

@@ -43,15 +43,15 @@ const PropertyCard = (props: IPropertyCard) => {
 
   return (
     <React.Fragment>
-      {/* <!-- Listing 1 --> */}
       <div className="rounded-xl shadow-md relative">
         <Image
-          src={`/assets/images/properties/${images[0]}`}
+          src={images[0]}
           alt=""
-          className="w-100 h-auto rounded-t-xl"
           width={0}
           height={0}
+          className="w-full h-[200px] rounded-t-xl"
           sizes="100vw"
+          priority={true}
         />
         <div className="p-4">
           <div className="text-left md:text-center lg:text-left mb-6">
